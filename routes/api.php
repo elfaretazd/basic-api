@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,3 +20,9 @@ Route::get('/greet/{name}', function ($name) {
         "message" => "Hello, {$name}!"
     ]);
 });
+
+Route::post('/students', [StudentController::class, 'store']);
+Route::get('/students', [StudentController::class, 'index']);
+Route::put('/students/{nim}', [StudentController::class, 'update']);
+Route::patch('/students/{nim}', [StudentController::class, 'update']);
+Route::delete('/students/{nim}', [StudentController::class, 'destroy']);
